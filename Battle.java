@@ -49,10 +49,12 @@ public class Battle
         while ((army1.size() > 0) && (army2.size() > 0))
         {
             do {
+            System.out.println("Good:"+goodFighter.getHealth()+"\t Evil:"+evilFighter.getHealth());
             evilFighter.takeDamage(goodFighter.attack());
             goodFighter.takeDamage(evilFighter.attack());
             } while (goodFighter.isAlive() && evilFighter.isAlive());
             
+            System.out.println("===Fight over===");
             if (goodFighter.isKnockedOut()){
                 System.out.println("Good Fighter has fallen. NEXT UP!");
                 goodFighter = army1.removeFirst();
@@ -62,7 +64,7 @@ public class Battle
                 System.out.println("Evil Fighter has fallen. NEXT UP!");
                 evilFighter = army2.removeFirst();
             }   
-   
+            System.out.println();
         }
         
         System.out.println("THE FINAL CONTEST!!!");
