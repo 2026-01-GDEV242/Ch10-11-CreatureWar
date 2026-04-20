@@ -72,4 +72,23 @@ public abstract class Creature
         // TODO: implement this
     }
     
+    /**
+     * getStrength allows subclasses to report the strength of a character
+     * @return strength value between the creatures MIN and MAX limits 
+     */
+    protected int getStrength()
+    {
+         return str;   
+    }
+    
+    /**
+     * getHealth allows subclasses to report the health of a character
+     * @return hp (hit point) value between the creatures MIN and MAX limits 
+     */
+    protected int getHealth()
+    {
+         return hp;   
+    }
+    
+    
 }
