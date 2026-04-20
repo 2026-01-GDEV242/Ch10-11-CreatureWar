@@ -36,8 +36,54 @@ public class Battle
      */
     public void EngageInBattle()
     {
+        System.out.println("\n\n\n== War Trumpets Sound ============");
         
-    }
+        Creature goodFighter;
+        Creature evilFighter;
+        
+        goodFighter = army1.removeFirst();  //get the first fighter and remove from list
+        evilFighter = army2.removeFirst();
+               
+        // while there are still creatures in each army 
+        // and one of the current fighters is still standing
+        while ((army1.size() > 0) && (army2.size() > 0))
+        {
+            do {
+            evilFighter.takeDamage(goodFighter.attack());
+            goodFighter.takeDamage(evilFighter.attack());
+            } while (goodFighter.isAlive() && evilFighter.isAlive());
+            
+            if (goodFighter.isKnockedOut()){
+                System.out.println("Good Fighter has fallen. NEXT UP!");
+                goodFighter = army1.removeFirst();
+            }
+            
+            if (evilFighter.isKnockedOut()){
+                System.out.println("Evil Fighter has fallen. NEXT UP!");
+                evilFighter = army2.removeFirst();
+            }   
+   
+        }
+        
+        System.out.println("THE FINAL CONTEST!!!");
+        do {
+            System.out.println("Good:"+goodFighter.getHealth()+"\t Evil:"+evilFighter.getHealth());
+            evilFighter.takeDamage(goodFighter.attack());
+            goodFighter.takeDamage(evilFighter.attack());
+            } while (goodFighter.isAlive() && evilFighter.isAlive());
+        
+        if (army1.size() > 0) {
+            System.out.println("Good has prevailed in middle earth.");
+        } else if (army2.size() > 0)  {
+            System.out.println("Evil has covered middle earth.");
+        } else { //total destruction
+            System.out.println("The only winner is death...");
+        }
+        }
+   
+
+        
+
     
         /**
      * Start Battle between army 1 and army 2
